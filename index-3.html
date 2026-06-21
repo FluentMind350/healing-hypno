@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="公認心理師・ヒプノセラピストによるオンラインセラピー。インナーチャイルド、セルフヒプノシス、禁煙・ダイエットの行動変容をサポート。" />
+  <title>Healing Hypno Online | ヒプノセラピー・オンラインセラピー</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink:       #1e2a20;
+      --deep:      #2d5a3d;
+      --warm:      #5a8a6a;
+      --sage:      #7db88a;
+      --sage-lt:   #b2d4bc;
+      --orange:    #e8874a;
+      --orange-lt: #f2a672;
+      --orange-dk: #c96e30;
+      --cream:     #faf8f3;
+      --mist:      #eef5f0;
+      --dew:       #deeee5;
+      --white:     #ffffff;
+      --radius:    6px;
+      --serif-jp:  'Noto Serif JP', serif;
+      --sans-jp:   'Noto Sans JP', sans-serif;
+      --serif-en:  'Cormorant Garamond', serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans-jp);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    .section--dark { background: var(--deep); color: var(--mist); }
+    .section--mist { background: var(--mist); }
+
+    .label {
+      font-family: var(--serif-en);
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .label--light { color: var(--orange-lt); }
+    .label--green { color: var(--sage); }
+
+    h1, h2, h3 { font-family: var(--serif-jp); font-weight: 300; line-height: 1.4; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 24px; }
+    h3 { font-size: 1.15rem; margin-bottom: 12px; }
+    p { margin-bottom: 1.2em; }
+    p:last-child { margin-bottom: 0; }
+
+    /* BTN */
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      font-family: var(--sans-jp);
+      font-size: .9rem;
+      font-weight: 400;
+      letter-spacing: .08em;
+      border: 1px solid currentColor;
+      border-radius: var(--radius);
+      transition: background .25s, color .25s, border-color .25s;
+      cursor: pointer;
+    }
+    .btn--primary { background: var(--orange); color: var(--white); border-color: var(--orange); }
+    .btn--primary:hover { background: var(--orange-lt); border-color: var(--orange-lt); }
+    .btn--green { background: var(--deep); color: var(--white); border-color: var(--deep); }
+    .btn--green:hover { background: var(--warm); border-color: var(--warm); }
+    .btn--outline { background: transparent; color: var(--deep); border-color: var(--deep); }
+    .btn--outline:hover { background: var(--deep); color: var(--white); }
+    .btn--outline-light { background: transparent; color: var(--white); border-color: rgba(255,255,255,.5); }
+    .btn--outline-light:hover { background: rgba(255,255,255,.15); }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,248,243,.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(232,135,74,.15);
+    }
+    .nav-inner {
+      max-width: 900px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { font-family: var(--serif-en); font-size: 1.1rem; letter-spacing: .05em; color: var(--deep); }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: .85rem; letter-spacing: .05em; color: var(--warm); transition: color .2s; }
+    .nav-links a:hover { color: var(--orange); }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+
+    /* HERO — bright forest morning */
+    .hero {
+      min-height: 100svh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding-top: 64px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(160deg, #cfe6c8 0%, #a8d4a0 25%, #e8c98a 60%, #f2b878 100%);
+      background-size: cover;
+      background-position: center 45%;
+      filter: brightness(.9) saturate(1.15);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(150deg, rgba(45,90,61,.22) 0%, rgba(232,135,74,.08) 70%, rgba(30,42,32,.02) 100%);
+    }
+    .hero-sun {
+      position: absolute;
+      top: 8%; right: 12%;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(242,166,114,.35) 0%, rgba(232,135,74,.1) 40%, transparent 70%);
+      border-radius: 50%;
+      animation: sunpulse 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes sunpulse {
+      0%, 100% { transform: scale(1); opacity: .7; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) { .hero-sun { animation: none; } }
+
+    .hero-content { position: relative; z-index: 1; }
+    .hero-en {
+      font-family: var(--serif-en); font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--orange-lt); margin-bottom: 20px; letter-spacing: .06em;
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); color: var(--white); margin-bottom: 28px; line-height: 1.35; text-shadow: 0 2px 16px rgba(20,30,22,.35); }
+    .hero-sub {
+      font-size: 1rem; color: rgba(250,248,243,.88);
+      max-width: 480px; margin-bottom: 44px; line-height: 2;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* NATURE STRIP */
+    .nature-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+      height: 260px; overflow: hidden;
+    }
+    .nature-strip-img {
+      background-size: cover; background-position: center;
+      transition: transform .7s ease;
+    }
+    .nature-strip-img:hover { transform: scale(1.04); }
+    @media (max-width: 580px) { .nature-strip { height: 160px; } }
+
+    /* WHAT IS */
+    .what-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 56px;
+    }
+    @media (max-width: 680px) { .what-grid { grid-template-columns: 1fr; } }
+    .what-card {
+      background: var(--white); padding: 40px 32px;
+      border-top: 3px solid transparent;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .what-card:hover { border-top-color: var(--orange); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(232,135,74,.1); }
+    .what-icon { font-size: 1.6rem; margin-bottom: 16px; display: block; }
+    .what-card h3 { font-size: 1.05rem; color: var(--deep); }
+    .what-card p { font-size: .9rem; color: var(--warm); }
+
+    /* SPLIT */
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    @media (max-width: 640px) { .split { grid-template-columns: 1fr; } }
+    .split-img {
+      min-height: 420px;
+      background-size: cover; background-position: center;
+    }
+    .split-body { padding: 72px 56px; display: flex; flex-direction: column; justify-content: center; }
+    @media (max-width: 640px) {
+      .split-img { min-height: 260px; }
+      .split-body { padding: 48px 24px; }
+    }
+
+    /* accent line */
+    .accent-line {
+      width: 40px; height: 2px;
+      background: var(--orange);
+      margin-bottom: 20px;
+    }
+
+    /* SERVICES */
+    .service-list { margin-top: 56px; display: flex; flex-direction: column; gap: 3px; }
+    .service-item {
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(178,212,188,.2);
+      padding: 28px 36px;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 24px; transition: background .2s, border-color .2s; border-radius: var(--radius);
+    }
+    .service-item:hover { background: rgba(255,255,255,.15); border-color: rgba(242,166,114,.4); }
+    .service-info h3 { color: var(--white); font-size: 1.05rem; margin-bottom: 6px; }
+    .service-info p { font-size: .88rem; color: rgba(238,245,240,.65); margin: 0; }
+    .service-meta { text-align: right; flex-shrink: 0; }
+    .service-price {
+      font-family: var(--serif-en); font-size: 1.5rem;
+      color: var(--orange-lt); display: block;
+    }
+    .service-duration { font-size: .8rem; color: rgba(178,212,188,.55); }
+    .service-item--featured { border-color: rgba(242,166,114,.5) !important; background: rgba(232,135,74,.08) !important; }
+    @media (max-width: 580px) {
+      .service-item { flex-direction: column; align-items: flex-start; }
+      .service-meta { text-align: left; }
+    }
+
+    /* PROFILE */
+    .profile-grid {
+      display: grid; grid-template-columns: 220px 1fr;
+      gap: 56px; align-items: start;
+    }
+    @media (max-width: 640px) { .profile-grid { grid-template-columns: 1fr; gap: 32px; } }
+    .credential-list { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .credential-list li {
+      font-size: .88rem; color: var(--warm);
+      padding-left: 20px; position: relative;
+    }
+    .credential-list li::before { content: '—'; position: absolute; left: 0; color: var(--orange); }
+
+    /* FLOW */
+    .approach-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px; margin-top: 56px;
+    }
+    @media (max-width: 680px) { .approach-steps { grid-template-columns: repeat(2, 1fr); } }
+    .step {
+      background: var(--white); padding: 32px 24px;
+      border-radius: var(--radius); text-align: center;
+      border-bottom: 3px solid transparent;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .step:hover { border-bottom-color: var(--orange); box-shadow: 0 6px 20px rgba(232,135,74,.1); }
+    .step-num {
+      font-family: var(--serif-en); font-size: 2.5rem;
+      color: var(--orange-lt); line-height: 1; margin-bottom: 12px; display: block;
+    }
+    .step h3 { font-size: .95rem; color: var(--deep); margin-bottom: 8px; }
+    .step p { font-size: .83rem; color: var(--warm); }
+
+    /* QUOTE BAND */
+    .quote-band {
+      position: relative; overflow: hidden;
+      padding: 100px 24px; text-align: center; color: var(--white);
+    }
+    .quote-band-bg {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(135deg, #b8dcc4 0%, #d8e8b8 50%, #f0d49a 100%);
+      background-size: cover; background-position: center 40%;
+      filter: brightness(.85) saturate(1.1);
+    }
+    .quote-band-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(45,90,61,.18), rgba(30,42,32,.28));
+    }
+    .quote-band-content { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .quote-band blockquote {
+      font-family: var(--serif-jp); font-weight: 300;
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      line-height: 2; color: rgba(250,248,243,.95);
+      margin-bottom: 20px;
+    }
+    .quote-band cite {
+      font-family: var(--serif-en); font-style: italic;
+      font-size: .9rem; color: var(--orange-lt);
+    }
+
+    /* CTA */
+    .cta-section {
+      position: relative; overflow: hidden;
+      text-align: center; padding: 120px 24px;
+      color: var(--white);
+    }
+    .cta-bg {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(135deg, #b8dcc4 0%, #d8e8b8 50%, #f0d49a 100%);
+      background-size: cover; background-position: center 50%;
+      filter: brightness(.82) saturate(1.1);
+    }
+    .cta-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(45,90,61,.2), rgba(30,42,32,.4));
+    }
+    .cta-content { position: relative; z-index: 1; }
+    .cta-section h2 { color: var(--white); margin-bottom: 16px; }
+    .cta-section p { color: rgba(250,248,243,.78); margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-price-note {
+      font-family: var(--serif-en); font-size: 1.1rem;
+      color: var(--orange-lt); margin-bottom: 36px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 48px 24px; text-align: center;
+    }
+    .footer-logo { font-family: var(--serif-en); font-size: 1.15rem; color: rgba(178,212,188,.45); margin-bottom: 8px; }
+    .footer-logo span { color: rgba(242,166,114,.6); }
+    .footer-links {
+      display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+      list-style: none; margin: 20px 0;
+    }
+    .footer-links a { font-size: .82rem; color: rgba(178,212,188,.4); transition: color .2s; }
+    .footer-links a:hover { color: var(--orange-lt); }
+    .footer-copy { font-size: .78rem; color: rgba(178,212,188,.2); }
+
+    /* FADE */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Healing <span>&</span> Hypnotherapy</div>
+    <ul class="nav-links">
+      <li><a href="#about">セラピーとは</a></li>
+      <li><a href="#services">サービス</a></li>
+      <li><a href="#profile">セラピスト</a></li>
+      <li><a href="#flow">ご予約の流れ</a></li>
+    </ul>
+    <a href="https://www.healinghypno-online.info/booking-calendar/初回相談" class="btn btn--primary" target="_blank">初回相談を予約</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-sun"></div>
+  <div class="container hero-content">
+    <p class="hero-en">Healing Hypno Online</p>
+    <h1>心の奥に届く、<br>やさしいセラピー</h1>
+    <p class="hero-sub">
+      公認心理師・認定ヒプノセラピストによる<br>
+      オンラインセッション。<br>
+      インナーチャイルド、行動変容、<br>
+      トラウマケアをご自宅から。
+    </p>
+    <div class="hero-btns">
+      <a href="https://www.healinghypno-online.info/booking-calendar/初回相談" class="btn btn--primary" target="_blank">初回相談（30分・3,000円）</a>
+      <a href="#about" class="btn btn--outline-light">セラピーについて知る</a>
+    </div>
+  </div>
+</section>
+
+<!-- NATURE STRIP 1 -->
+<div class="nature-strip">
+  <div class="nature-strip-img" style="background-image:linear-gradient(150deg, #d4e8c8 0%, #aed99a 100%)"></div>
+  <div class="nature-strip-img" style="background-image:linear-gradient(160deg, #c2dec8 0%, #e0d49a 100%)"></div>
+  <div class="nature-strip-img" style="background-image:linear-gradient(160deg, #b0d8c0 0%, #ecd084 100%)"></div>
+</div>
+
+<!-- WHAT IS -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="fade-in">
+      <p class="label">What is Hypnotherapy</p>
+      <h2>ヒプノセラピーって、<br>何ができるの？</h2>
+      <p style="max-width:560px; color:var(--warm);">
+        催眠療法は「眠らせる」ものではありません。<br>
+        深いリラクゼーションの中で、潜在意識にアクセスし、<br>
+        思考・感情・行動のパターンを根本から変えていくアプローチです。
+      </p>
+    </div>
+    <div class="what-grid fade-in">
+      <div class="what-card">
+        <span class="what-icon">🌱</span>
+        <h3>インナーチャイルド</h3>
+        <p>幼少期の傷ついた自分と向き合い、自己肯定感を取り戻す</p>
+      </div>
+      <div class="what-card">
+        <span class="what-icon">🔄</span>
+        <h3>行動変容</h3>
+        <p>禁煙・過食・先延ばしなど、意志だけでは変えられなかったパターンを手放す</p>
+      </div>
+      <div class="what-card">
+        <span class="what-icon">🧘</span>
+        <h3>ストレス・不安</h3>
+        <p>慢性的な緊張や不安感を、身体の深いところからほぐしていく</p>
+      </div>
+      <div class="what-card">
+        <span class="what-icon">💫</span>
+        <h3>前世療法</h3>
+        <p>繰り返すパターンの根源を探り、深いレベルでの気づきを得る</p>
+      </div>
+      <div class="what-card">
+        <span class="what-icon">🎯</span>
+        <h3>セルフヒプノシス</h3>
+        <p>自分でできる自己催眠を習得し、日常のセルフケアに活かす</p>
+      </div>
+      <div class="what-card">
+        <span class="what-icon">🤝</span>
+        <h3>マインドフルネス</h3>
+        <p>「今ここ」に戻る練習を通じて、心の安定基盤をつくる</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT: 森 + テキスト -->
+<div class="split fade-in">
+  <div class="split-img" style="background-image:linear-gradient(150deg, #c8e0d0 0%, #e8d49a 100%)"></div>
+  <div class="split-body" style="background:var(--mist);">
+    <div class="accent-line"></div>
+    <p class="label--green" style="font-family:var(--serif-en);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);margin-bottom:16px;">A Safe Space</p>
+    <h2>ここでは、<br>あなたでいて<br>大丈夫</h2>
+    <p style="color:var(--warm);">
+      どんなライフステージ、セクシャリティ、文化的背景を持つ方も、
+      安心してセッションを受けていただける場所です。
+      ひとりで抱えきれない生きづらさを、どうぞ安心してお聞かせください。
+    </p>
+    <a href="#services" class="btn btn--outline" style="align-self:flex-start; margin-top:8px;">サービスを見る</a>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section section--dark" id="services">
+  <div class="container">
+    <div class="fade-in">
+      <p class="label label--light">Services & Pricing</p>
+      <h2>サービス一覧</h2>
+      <p style="color:rgba(238,245,240,.7); max-width:480px;">
+        全セッションはZoom / Google Meet によるオンライン実施です。<br>
+        ※ アメリカ・カナダ在住の方はご予約いただけません。
+      </p>
+    </div>
+    <div class="service-list fade-in">
+      <div class="service-item">
+        <div class="service-info">
+          <h3>初回相談</h3>
+          <p>はじめての方向け。お悩みのヒアリングとセラピーのご説明。</p>
+        </div>
+        <div class="service-meta">
+          <span class="service-price">¥3,000</span>
+          <span class="service-duration">30分</span>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-info">
+          <h3>心理カウンセリング</h3>
+          <p>ACT・CBT・EMDRなどを用いた個人セッション。</p>
+        </div>
+        <div class="service-meta">
+          <span class="service-price">¥10,000</span>
+          <span class="service-duration">60分</span>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-info">
+          <h3>催眠療法（ヒプノセラピー）個人セッション</h3>
+          <p>潜在意識へのアプローチで、深いレベルの変容を促します。</p>
+        </div>
+        <div class="service-meta">
+          <span class="service-price">¥30,000</span>
+          <span class="service-duration">2〜3時間</span>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-info">
+          <h3>前世療法グループセッション</h3>
+          <p>少人数グループで行う前世退行療法。</p>
+        </div>
+        <div class="service-meta">
+          <span class="service-price">¥15,000</span>
+          <span class="service-duration">3時間</span>
+        </div>
+      </div>
+      <div class="service-item service-item--featured">
+        <div class="service-info">
+          <h3>🔥 催眠基礎講座（2日間）<br><small style="color:var(--orange-lt); font-size:.82rem;">2026年8月8日〜9日 ｜ 残席わずか</small></h3>
+          <p>催眠療法の基礎を学ぶ集中講座。セラピスト志望の方にも。</p>
+        </div>
+        <div class="service-meta">
+          <span class="service-price">¥50,000</span>
+          <span class="service-duration">2日間</span>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-info">
+          <h3>マインドフルネス・リラクゼーション</h3>
+          <p>呼吸・身体感覚を使ったマインドフルネスの個人レッスン。</p>
+        </div>
+        <div class="service-meta">
+          <span class="service-price">¥10,000</span>
+          <span class="service-duration">60分</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:40px;" class="fade-in">
+      <a href="https://www.healinghypno-online.info/book-online" class="btn btn--outline-light" target="_blank">予約ページへ</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BAND — sunset beach -->
+<div class="quote-band">
+  <div class="quote-band-bg"></div>
+  <div class="quote-band-overlay"></div>
+  <div class="quote-band-content fade-in">
+    <blockquote>
+      「本当の癒しは、<br>過去を受け入れて解消した時に訪れる」
+    </blockquote>
+    <cite>— 山田多惠子 / Healing &amp; Hypnotherapy Online</cite>
+  </div>
+</div>
+
+<!-- SPLIT: テキスト + 水・光の写真 -->
+<div class="split fade-in">
+  <div class="split-body" style="background:var(--cream);">
+    <div class="accent-line"></div>
+    <p style="font-family:var(--serif-en);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;">Mind & Body</p>
+    <h2>心と身体、<br>両方から<br>アプローチ</h2>
+    <p style="color:var(--warm);">
+      フィットネスインストラクターとしての経験も活かし、
+      頭（思考）だけでなく、身体の緊張や自律神経のバランスにも
+      配慮した優しいケアを心がけています。
+    </p>
+  </div>
+  <div class="split-img" style="background-image:linear-gradient(150deg, #d8e8c0 0%, #f0c888 100%); background-position: center 30%;"></div>
+</div>
+
+<!-- PROFILE -->
+<section class="section section--mist" id="profile">
+  <div class="container">
+    <div class="fade-in">
+      <p class="label">About the Therapist</p>
+    </div>
+    <div class="profile-grid fade-in">
+      <div>
+        <img src="data:image/jpeg;base64,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"
+             alt="山田多惠子 - 公認心理師・ヒプノセラピスト"
+             style="width:220px; height:auto; object-fit:cover; object-position:center top; border-radius:2px; display:block;" />
+        <ul class="credential-list">
+          <li>豪州 モナッシュ大学 ソーシャルワーク修士（MSW）</li>
+          <li>家族療法 グラデュエート・ディプロマ（豪州）</li>
+          <li>日本公認心理師（CPP）</li>
+          <li>NGH 米国催眠士協会 認定ヒプノセラピスト</li>
+          <li>ABH 米国催眠療法協会 認定トレーナー</li>
+          <li>TELL Japan サイコセラピスト</li>
+        </ul>
+      </div>
+      <div>
+        <div class="accent-line"></div>
+        <h2>山田多惠子<br><small style="font-size:1rem; color:var(--warm);">MSW, CPP — 公認心理師・ヒプノセラピスト</small></h2>
+        <p style="color:var(--deep); margin-top:16px;">
+          オーストラリアと日本でソーシャルワーカーとして15年以上の経験を持つ心理セラピストです。
+          うつ・不安・トラウマ（PTSD/CPTSD）・DV支援・ジェンダーケアなど、
+          多岐にわたる現場で経験を重ねてきました。
+        </p>
+        <p style="color:var(--deep);">
+          ACT、CBT、EMDR、催眠療法を組み合わせたインテグレイティブなアプローチで、
+          一人ひとりに合ったセラピーを提供しています。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NATURE STRIP 2 -->
+<div class="nature-strip">
+  <div class="nature-strip-img" style="background-image:linear-gradient(150deg, #d0e6c0 0%, #f0c888 100%)"></div>
+  <div class="nature-strip-img" style="background-image:linear-gradient(150deg, #bcdcc8 0%, #e8e0a0 100%)"></div>
+  <div class="nature-strip-img" style="background-image:linear-gradient(150deg, #c8e0c8 0%, #e8d098 100%)"></div>
+</div>
+
+<!-- FLOW -->
+<section class="section" id="flow">
+  <div class="container">
+    <div class="fade-in">
+      <p class="label">How it Works</p>
+      <h2>ご予約の流れ</h2>
+    </div>
+    <div class="approach-steps fade-in">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3>初回相談を予約</h3>
+        <p>オンライン予約フォームから30分・3,000円の初回相談をご予約ください</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3>お悩みをシェア</h3>
+        <p>ZoomまたはGoogle Meetにてヒアリング。どんな内容もお気軽に</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3>プランをご提案</h3>
+        <p>お悩みに合わせた最適なセッションプランをご提案します</p>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <h3>セラピー開始</h3>
+        <p>ご自宅からリラックスした状態でセッションをお受けください</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content fade-in">
+    <p class="label label--light">First Step</p>
+    <h2>まず、話してみませんか</h2>
+    <p>初回相談は30分、3,000円。<br>どんな小さなお悩みでも、ここから始められます。</p>
+    <p class="cta-price-note">¥3,000 / 30min — Online via Zoom or Google Meet</p>
+    <a href="https://www.healinghypno-online.info/booking-calendar/初回相談" class="btn btn--primary" target="_blank">今すぐ初回相談を予約する</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">Healing <span>&</span> Hypnotherapy Online</p>
+  <ul class="footer-links">
+    <li><a href="https://www.healinghypno-online.info/ヒプノセラピーとは" target="_blank">ヒプノセラピーとは？</a></li>
+    <li><a href="https://www.healinghypno-online.info/book-online" target="_blank">サービス・予約</a></li>
+    <li><a href="mailto:admin@healinghypno-online.info">お問い合わせ</a></li>
+    <li><a href="https://www.instagram.com/fluentmind_jp" target="_blank">Instagram</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Healing and Hypnotherapy Online. All rights reserved.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
