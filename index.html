@@ -338,6 +338,7 @@
     /* FADE */
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
     .fade-in.visible { opacity: 1; transform: none; }
+  .back-top{position:fixed;bottom:28px;right:28px;z-index:200;width:44px;height:44px;background:var(--orange);color:var(--white);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;font-size:1.2rem;box-shadow:0 4px 12px rgba(232,135,74,.35)}.back-top.visible{opacity:1;pointer-events:auto}.back-top:hover{transform:translateY(-3px);background:var(--orange-lt)}
   </style>
 </head>
 <body>
@@ -457,7 +458,7 @@
       <h2>サービス一覧</h2>
       <p style="color:rgba(238,245,240,.7); max-width:480px;">
         全セッションはZoom / Google Meet によるオンライン実施です。<br>
-        ※ アメリカ・カナダ在住の方はご予約いただけません。
+        ※ アメリカ・カナダ在住の方はご予約いただけないこともありますので、ご注意ください。
       </p>
     </div>
     <div class="service-list fade-in">
@@ -664,5 +665,8 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
+
+<button class="back-top" id="backTop" aria-label="ページトップへ" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>window.addEventListener('scroll',()=>{const b=document.getElementById('backTop');if(b)b.classList.toggle('visible',window.scrollY>300);});</script>
 </body>
 </html>
