@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://healinghypno-online.info/sitemap.xml
