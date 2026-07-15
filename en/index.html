@@ -123,7 +123,7 @@
     .nav-lang a:hover { color: var(--orange); }
     .nav-lang .active-lang { color: var(--orange); font-weight: 500; }
     .nav-lang .sep { color: var(--sage-lt); }
-    @media (max-width: 640px) { .nav-links { display: none; } }
+@media (max-width: 640px) { .nav-links { display: flex; gap: 0; } .nav-links li { display: none; } .nav-links li.lang-switch { display: block; } }
 
     /* HERO */
     .hero {
@@ -377,7 +377,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#profile">Therapist</a></li>
       <li><a href="https://fluentmind350.github.io/healing-hypno-booking/en.html">How to Book</a></li>
-      <li class="nav-lang">
+      <li class="nav-lang lang-switch">
         <a href="https://www.healinghypno-online.info">JP</a>
         <span class="sep">|</span>
         <span class="active-lang">EN</span>
