@@ -116,7 +116,7 @@
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a { font-size: .85rem; letter-spacing: .05em; color: var(--warm); transition: color .2s; }
     .nav-links a:hover { color: var(--orange); }
-    @media (max-width: 640px) { .nav-links { display: none; } }
+@media (max-width: 640px) { .nav-links { display: flex; gap: 0; } .nav-links li { display: none; } .nav-links li.lang-switch { display: block; } }
 
     /* HERO — bright forest morning */
     .hero {
@@ -375,7 +375,7 @@
       <li><a href="#services">サービス</a></li>
       <li><a href="#profile">セラピスト</a></li>
       <li><a href="https://fluentmind350.github.io/healing-hypno-booking/" target="_blank">ご予約の流れ</a></li>
-      <li style="font-size:.8rem;display:flex;align-items:center;gap:6px;letter-spacing:.06em;"><span style="color:var(--orange);font-weight:500">JP</span><span style="color:var(--sage-lt)">|</span><a href="/en/" style="color:var(--warm)">EN</a></li>
+      <li class="lang-switch" style="font-size:.8rem;display:flex;align-items:center;gap:6px;letter-spacing:.06em;"><span style="color:var(--orange);font-weight:500">JP</span><span style="color:var(--sage-lt)">|</span><a href="/en/" style="color:var(--warm)">EN</a></li>
     </ul>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7ksZSYjFXfZsTuzKey1ICZi8XS70Y63VBq0-anXYmDNOoTw/viewform" class="btn btn--primary" target="_blank">初回相談を予約</a>
   </div>
